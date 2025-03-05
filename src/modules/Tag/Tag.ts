@@ -1,6 +1,6 @@
 import {TagOptionsType} from './Tag.types'
 
-export class Tag {
+export default class Tag {
     private generatedTag: string = ''
     private singleTags = ['br', 'img', 'input']
 
