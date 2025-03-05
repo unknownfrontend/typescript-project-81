@@ -5,7 +5,7 @@ lint:
 	npm run lint
 
 develop:
-    npm run start
+	npm run start
 
 build:
 	npm run build
