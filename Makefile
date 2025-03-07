@@ -4,7 +4,7 @@ install:
 lint:
 	npm run lint
 
-develop:
+dev:
 	npm run dev
 
 build:

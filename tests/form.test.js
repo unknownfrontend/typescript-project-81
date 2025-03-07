@@ -1,15 +1,20 @@
 import { expect, test } from 'vitest';
-import Tag from '../src/modules/Tag/Tag';
+import HexletCode from '../src/modules/HexletCode/HexletCode.ts';
+import {form, formAction} from "./__fixtures__/form.js";
 
-const tpl1 = {method: 'post'}
-const action = {
+const tpl1 = {name: 'nick'}
+const formParams = {
     url: '/users'
 }
 
-test('test form1', () => {
-    expect(Tag.formFor(tpl1)).toBe('<form action="#" method="post"></form>');
+test('test form without options', () => {
+    expect(HexletCode.formFor(tpl1)).toBe(form);
 });
 
-test('test form2', () => {
-    expect(Tag.formFor(tpl1, action)).toBe('<form action="/users" method="post"></form>');
+test('test form with empty options', () => {
+    expect(HexletCode.formFor(tpl1, {})).toBe(form);
+});
+
+test('test form with options', () => {
+    expect(HexletCode.formFor(tpl1, formParams)).toBe(formAction);
 });
