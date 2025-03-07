@@ -39,6 +39,12 @@ export default class HexletCode {
     }
   }
 
+  private static prepareLabel = (name: string): void => {
+    const labelName = name[0].toUpperCase() + name.slice(1)
+
+    this.formContent += new Tag('label', { for: name }, labelName).toString()
+  }
+
   private static prepareInputOptions = (name: string, options: FormTemplate): TagOptions => {
     const inputOptions = {
       name,
@@ -62,9 +68,8 @@ export default class HexletCode {
     }
 
     const inputOptions = this.prepareInputOptions(name, options)
-    const labelName = name[0].toUpperCase() + name.slice(1)
 
-    this.formContent += new Tag('label', { for: name }, labelName).toString()
+    this.prepareLabel(name)
     this.formContent += new Tag('input', inputOptions).toString()
   }
 
@@ -87,6 +92,7 @@ export default class HexletCode {
     const value = this.formTemplate[name] ?? ''
     const textareaOptions = this.prepareTextareaOptions(name, options)
 
+    this.prepareLabel(name)
     this.formContent += new Tag('textarea', textareaOptions, value).toString()
   }
 
