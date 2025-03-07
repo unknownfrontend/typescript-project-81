@@ -9,7 +9,7 @@ export default [
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
-    ignores: ['dist/', '__tests__/', 'coverage/'],
+    ignores: ['dist/', '__tests__/', 'coverage/', 'eslint.config.js'],
   },
   {
     files: [
