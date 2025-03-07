@@ -1,7 +1,7 @@
-import globals from 'globals'
-import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import stylistic from '@stylistic/eslint-plugin'
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default [
   stylistic.configs.recommended,
