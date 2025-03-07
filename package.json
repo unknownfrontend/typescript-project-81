@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "TS project",
-  "main": "src/index.ts",
+  "main": "src/HexletCode/HexletCode.ts",
   "type": "module",
   "scripts": {
     "build": "rimraf ./dist && tsc",
