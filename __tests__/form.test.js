@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 import HexletCode from '../src/modules/HexletCode/HexletCode.ts';
 import {form, formAction} from "./__fixtures__/form.js";
 
-const tpl1 = {name: 'nick'}
+const tpl1 = { name: 'nick' }
 const formParams = {
     url: '/users'
 }
