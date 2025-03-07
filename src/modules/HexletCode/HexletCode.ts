@@ -75,9 +75,9 @@ export default class HexletCode {
 
   private static prepareTextareaOptions = (name: string, options: FormTemplate): TagOptions => {
     const textareaOptions = {
-      name,
       cols: options?.cols ?? '20',
       rows: options?.rows ?? '40',
+      name,
       ...options,
     }
 
