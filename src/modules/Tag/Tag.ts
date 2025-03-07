@@ -1,38 +1,38 @@
-import {TagOptions} from './Tag.types'
+import { TagOptions } from './Tag.types'
 
 export default class Tag {
-    private generatedTag: string = ''
-    private singleTags = ['br', 'img', 'input']
+  private generatedTag = ''
+  private singleTags = ['br', 'img', 'input']
 
-    constructor(protected name: string, protected options?: TagOptions, protected content: string = '') {
-        this.generateTag()
+  constructor(protected name: string, protected options?: TagOptions, protected content = '') {
+    this.generateTag()
+  }
+
+  private generateTag = (): void => {
+    if (this.singleTags.includes(this.name.toLowerCase())) {
+      this.generatedTag = this.prepareSingleTag()
+
+      return
     }
 
-    private generateTag = (): void => {
-        if (this.singleTags.includes(this.name.toLowerCase())) {
-            this.generatedTag = this.prepareSingleTag()
+    this.generatedTag = this.prepareTag()
+  }
 
-            return
-        }
+  private prepareOptions = (): string => {
+    if (!this.options || !Object.keys(this.options).length) return ''
 
-        this.generatedTag = this.prepareTag()
-    }
+    const options = Object.entries(this.options).map(([key, value]) => `${key}="${value}"`).join(' ')
 
-    private prepareOptions = (): string => {
-        if (!this.options || !Object.keys(this.options).length) return ''
+    return ` ${options}`
+  }
 
-        const options = Object.entries(this.options).map(([key, value]) => `${key}="${value}"`).join(' ')
+  private prepareSingleTag = (): string => {
+    return `<${this.name}${this.prepareOptions()}>`
+  }
 
-        return ` ${options}`
-    }
+  private prepareTag = (): string => {
+    return `<${this.name}${this.prepareOptions()}>${this.content ?? ''}</${this.name}>`
+  }
 
-    private prepareSingleTag = (): string => {
-        return `<${this.name}${this.prepareOptions()}>`
-    }
-
-    private prepareTag = (): string => {
-        return `<${this.name}${this.prepareOptions()}>${this.content ?? ''}</${this.name}>`
-    }
-
-    public toString = (): string => this.generatedTag
+  public toString = (): string => this.generatedTag
 }

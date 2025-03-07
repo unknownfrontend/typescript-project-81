@@ -1,31 +1,30 @@
-import tsParser from '@typescript-eslint/parser';
-import tsEslintPlugin from '@typescript-eslint/eslint-plugin';
-import globals from "globals";
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import stylistic from '@stylistic/eslint-plugin'
 
 export default [
-    {
-        files: ['**/*.{mjs,ts}']
-    },
-    {
-        ignores: ['dist/", "**/node_modules', '**/*.js', 'tests/']
-    },
-    {
-        languageOptions: {
-            parser: tsParser,
-            globals: {
-                ...globals.node,
-            },
+  stylistic.configs.recommended,
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+  {
+    ignores: ['dist/', '__tests__/', 'coverage/'],
+  },
+  {
+    files: [
+      'src/**/*.{js,ts}',
+    ],
+  },
+  {
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['src/*.js', 'src/*.ts'],
         },
-        plugins: {
-            '@typescript-eslint': tsEslintPlugin,
-        },
-        rules: {
-            '@typescript-eslint/no-unused-vars': ['error', {
-                'args': 'all',
-            }],
-            'no-undef': 'warn',
-            'no-unused-vars': 'warn',
-            semi: ['error', 'never'],
-        },
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
-];
+  },
+]

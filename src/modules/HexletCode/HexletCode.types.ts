@@ -1,4 +1,4 @@
-export type FormTemplate = Record<string, string> & {as?: string}
+export type FormTemplate = Record<string, string> & { as?: string }
 export enum FormTags {
-    TEXTAREA =  'textarea',
+  TEXTAREA = 'textarea',
 }
