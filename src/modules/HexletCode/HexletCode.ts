@@ -36,15 +36,7 @@ export default class HexletCode {
         }
     }
 
-    static input = (name: string, options: FormTemplate): void => {
-        this.checkTemplateError(name)
-
-        if (options?.as === FormTags.TEXTAREA) {
-            this.textarea(name, options)
-
-            return
-        }
-
+    private static prepareInputOptions = (name: string, options: FormTemplate): TagOptions => {
         const inputOptions = {
             name,
             type: options?.type ?? 'text',
@@ -54,22 +46,53 @@ export default class HexletCode {
 
         delete inputOptions.as
 
+        return inputOptions
+    }
+
+    static input = (name: string, options: FormTemplate): void => {
+        this.checkTemplateError(name)
+
+        if (options?.as === FormTags.TEXTAREA) {
+            this.textarea(name, options)
+
+            return
+        }
+
+        const inputOptions = this.prepareInputOptions(name, options)
+        const labelName = this.formTemplate[name] ?? ''
+
+        this.formContent += new Tag('label', {for: name}, labelName).toString()
         this.formContent += new Tag('input', inputOptions).toString()
     }
 
-    static textarea = (name: string, options: FormTemplate): void => {
-        this.checkTemplateError(name)
-
-        const value = this.formTemplate[name] ?? ''
-        const inputOptions = {
+    private static prepareTextareaOptions = (name: string, options: FormTemplate): TagOptions => {
+        const textareaOptions = {
             name,
             cols: options?.cols ?? '20',
             rows: options?.rows ?? '40',
             ...options
         }
 
-        delete inputOptions.as
+        delete textareaOptions.as
 
-        this.formContent += new Tag('textarea', inputOptions, value).toString()
+        return textareaOptions
+    }
+
+    static textarea = (name: string, options: FormTemplate): void => {
+        this.checkTemplateError(name)
+
+        const value = this.formTemplate[name] ?? ''
+        const textareaOptions = this.prepareTextareaOptions(name, options)
+
+        this.formContent += new Tag('textarea', textareaOptions, value).toString()
+    }
+
+    static submit = (name?: string) => {
+        const submitOptions = {
+            type: 'submit',
+            value: name?.length ? name : 'Save'
+        }
+
+        this.formContent += new Tag('input', submitOptions).toString()
     }
 }

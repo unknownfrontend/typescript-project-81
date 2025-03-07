@@ -1,6 +1,13 @@
 import { expect, test } from 'vitest';
 import HexletCode from '../src/modules/HexletCode/HexletCode.ts';
-import {inputWithAdditional, inputWithAs, inputWithAsWithDefault, inputWithDefaultRedeclared} from "./__fixtures__/input.js";
+import {
+    inputTypeSubmitWithDefaultValue,
+    inputTypeSubmitWithValue,
+    inputWithAdditional,
+    inputWithAs,
+    inputWithAsWithDefault,
+    inputWithDefaultRedeclared
+} from "./__fixtures__/mainForm.js";
 
 const template = { name: 'rob', job: 'hexlet', gender: 'm' }
 
@@ -41,4 +48,25 @@ test('input with redeclared values', () => {
         HexletCode.formFor(template, { url: '#' }, (f) =>
             f.input('job', { as: 'textarea', rows: 50, cols: 50}))
     ).toBe(inputWithDefaultRedeclared);
+})
+
+
+test('input type submit with default', () => {
+    expect(
+        HexletCode.formFor(template, { method: 'post' }, (f) => {
+            f.input('name');
+            f.input('job');
+            f.submit('');
+        })
+    ).toBe(inputTypeSubmitWithDefaultValue);
+})
+
+test('input type submit with value', () => {
+    expect(
+        HexletCode.formFor(template, { method: 'post' }, (f) => {
+            f.input('name');
+            f.input('job');
+            f.submit('Wow');
+        })
+    ).toBe(inputTypeSubmitWithValue);
 })
