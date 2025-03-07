@@ -1,13 +1,15 @@
 import { expect, test } from 'vitest';
 import Tag from '../src/modules/Tag/Tag.ts';
-import { br, emptyDiv, img, input, label, labelFor } from './__fixtures__/tag.js';
+import {
+  br, emptyDiv, img, input, label, labelFor
+} from './__fixtures__/tag.js';
 
 test('test br', () => {
   expect(new Tag('br').toString()).toBe(br);
 });
 
 test('test img', () => {
-  expect(new Tag('img', { src: "path/to/image" }).toString()).toBe(img);
+  expect(new Tag('img', { src: 'path/to/image' }).toString()).toBe(img);
 });
 
 test('test input', () => {
