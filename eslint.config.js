@@ -13,16 +13,14 @@ export default [
   },
   {
     files: [
-      'src/**/*.{js,ts}',
+      '/**/*.{js,ts}',
     ],
   },
   {
     languageOptions: {
       globals: globals.node,
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ['src/*.js', 'src/*.ts'],
-        },
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
