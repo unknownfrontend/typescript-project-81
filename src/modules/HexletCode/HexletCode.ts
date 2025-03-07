@@ -62,7 +62,7 @@ export default class HexletCode {
     }
 
     const inputOptions = this.prepareInputOptions(name, options)
-    const labelName = this.formTemplate[name] ?? ''
+    const labelName = name[0].toUpperCase() + name.slice(1)
 
     this.formContent += new Tag('label', { for: name }, labelName).toString()
     this.formContent += new Tag('input', inputOptions).toString()
