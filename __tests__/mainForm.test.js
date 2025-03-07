@@ -13,17 +13,15 @@ const template = { name: 'rob', job: 'hexlet', gender: 'm' };
 
 test('test input error', () => {
   expect(() =>
-      HexletCode.formFor(template, { method: 'post' }, (f) => {
-      f.input('hexlet');
-  })).toThrowError()
+    HexletCode.formFor(template, { method: 'post' }, (f) => f.input('hexlet'))).toThrowError()
 });
 
 test('input with as', () => {
   expect(
     HexletCode.formFor(template, { method: 'post' }, (f) => {
       f.input('name');
-      f.input('job', { as: 'textarea' });
-    })
+      f.input('job', { as: 'textarea', });
+    }),
   ).toBe(inputWithAs);
 });
 
@@ -38,15 +36,13 @@ test('input with additional options', () => {
 
 test('input with default values', () => {
   expect(
-    HexletCode.formFor(template, {}, (f) =>
-      f.input('job', { as: 'textarea' }))
+    HexletCode.formFor(template, {}, (f) => f.input('job', { as: 'textarea' }))
   ).toBe(inputWithAsWithDefault);
 });
 
 test('input with redeclared values', () => {
   expect(
-    HexletCode.formFor(template, { url: '#' }, (f) =>
-      f.input('job', { as: 'textarea', rows: 50, cols: 50}))
+    HexletCode.formFor(template, { url: '#' }, (f) => f.input('job', { as: 'textarea', rows: 50, cols: 50}))
   ).toBe(inputWithDefaultRedeclared);
 });
 
@@ -62,11 +58,11 @@ test('input type submit with default', () => {
 });
 
 test('input type submit with value', () => {
-   expect(
-     HexletCode.formFor(template, { method: 'post' }, (f) => {
-       f.input('name');
-       f.input('job');
-       f.submit('Wow');
-     })
-   ).toBe(inputTypeSubmitWithValue);
+  expect(
+    HexletCode.formFor(template, { method: 'post' }, (f) => {
+      f.input('name');
+      f.input('job');
+      f.submit('Wow');
+    })
+  ).toBe(inputTypeSubmitWithValue);
 });

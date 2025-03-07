@@ -4,7 +4,7 @@ import { form, formAction } from './__fixtures__/form.js';
 
 const tpl1 = { name: 'nick' };
 const formParams = {
-  url: '/users'
+  url: '/users',
 };
 
 test('test form without options', () => {

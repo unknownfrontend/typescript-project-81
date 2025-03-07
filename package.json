@@ -34,8 +34,6 @@
     "pre-push": "make lint"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@stylistic/eslint-plugin": "^4.2.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.13.9",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
@@ -52,6 +50,9 @@
     "vitest": "^3.0.7"
   },
   "dependencies": {
-    "es-toolkit": "^1.32.0"
+    "es-toolkit": "^1.32.0",
+    "globals": "^16.0.0",
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin": "^4.2.0"
   }
 }
