@@ -27,4 +27,4 @@ export default [
     },
   },
   // eslint-disable-next-line semi
-],
+]
