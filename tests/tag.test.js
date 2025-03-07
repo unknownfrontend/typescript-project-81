@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import Tag from '../src/modules/Tag/Tag.ts';
+import Tag from '../src/modules/Tag/Tag';
 
 test('test br', () => {
     expect(new Tag("br").toString()).toBe('<br>');

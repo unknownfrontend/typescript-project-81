@@ -1,10 +1,10 @@
-import {TagOptionsType} from './Tag.types'
+import {Action, TagOptions} from './Tag.types'
 
 export default class Tag {
     private generatedTag: string = ''
     private singleTags = ['br', 'img', 'input']
 
-    constructor(protected name: string, protected options?: TagOptionsType, protected content?: string) {
+    constructor(protected name: string, protected options?: TagOptions, protected content?: string) {
         this.generateTag()
     }
 
@@ -35,4 +35,16 @@ export default class Tag {
     }
 
     public toString = (): string => this.generatedTag
+
+    static formFor = (template: TagOptions, action: Action = {url: '#'}, cb?: () => void) => {
+        const name = 'form'
+        const options = {
+            action: action.url,
+            ...template
+        }
+
+        cb && cb()
+
+        return new Tag(name, options).toString()
+    }
 }
