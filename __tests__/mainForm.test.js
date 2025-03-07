@@ -40,10 +40,8 @@ test('input with default values', () => {
 });
 
 test('input with redeclared values', () => {
-  expect(HexletCode.formFor(template, { url: '#' }, (f) => f.input('job', { as: 'textarea', rows: 50, cols: 50 })),
-  ).toBe(inputWithDefaultRedeclared);
+  expect(HexletCode.formFor(template, { url: '#' }, (f) => f.input('job', { as: 'textarea', rows: 50, cols: 50 }))).toBe(inputWithDefaultRedeclared);
 });
-
 
 test('input type submit with default', () => {
   expect(

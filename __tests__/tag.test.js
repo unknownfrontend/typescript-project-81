@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import Tag from '../src/modules/Tag/Tag.ts';
 import {
-  br, emptyDiv, img, input, label, labelFor
+  br, emptyDiv, img, input, label, labelFor,
 } from './__fixtures__/tag.js';
 
 test('test br', () => {

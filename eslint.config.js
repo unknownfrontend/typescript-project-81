@@ -1,5 +1,6 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
+// eslint-disable-next-line import/no-unresolved
 import tseslint from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 
@@ -25,4 +26,5 @@ export default [
       },
     },
   },
-]
+  // eslint-disable-next-line semi
+],
