@@ -13,7 +13,7 @@ export default [
   },
   {
     files: [
-      '/**/*.{js,ts}',
+      '/src/*.{js,ts}',
     ],
   },
   {
