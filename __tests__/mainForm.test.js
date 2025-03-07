@@ -7,7 +7,7 @@ import {
   inputWithAs,
   inputWithAsWithDefault,
   inputWithDefaultRedeclared,
-} from '/__fixtures__/mainForm.js';
+} from './__fixtures__/mainForm.js';
 
 const template = { name: 'rob', job: 'hexlet', gender: 'm' };
 
